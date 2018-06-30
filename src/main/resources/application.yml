@@ -9,5 +9,5 @@ spring:
       port: 8500
       discovery:
         healthCheckInterval: 15s
-        instance-id: ${spring.application.name}-${random.value}
+        instance-id: ${spring.application.name}-a
 #       health-check-path: 默认值是 /actuator/health，不需要配，但是在window下会解析错误，导致健康检查出错，配置health-check-url代替可以解决，如：http://192.168.1.102:9003/actuator/health
