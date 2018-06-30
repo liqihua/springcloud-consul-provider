@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2018/6/24
  */
 @RestController
-@RequestMapping("/helloProviderController")
-public class HelloProviderController {
+@RequestMapping("/helloController")
+public class HelloController {
 
     @RequestMapping("/hello")
     public String hello(){
-        System.out.println("--- helloProviderController hello() : come !");
-        return "i am HelloProviderController";
+        System.out.println("--- hello ... abcd ");
+        return "i am helloController aaaaa .... 123";
     }
 
 }

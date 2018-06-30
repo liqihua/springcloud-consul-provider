@@ -2,12 +2,14 @@ server:
   port: 9003
 spring:
   application:
-    name: springcloud-consul-provider-1
+    name: springcloud-consul-provider #定义服务应用名称
   cloud:
     consul:
-      host: 192.168.1.101
-      port: 8500
+      host: 192.168.1.101 #consul的地址（client模式）
+      port: 8500 #consul的端口
       discovery:
+        #检查服务健康的心跳间隔
         healthCheckInterval: 15s
-        instance-id: ${spring.application.name}-a
+        #服务应用注册在consul的实例名称，一个服务可能有多个实例，所以实例id应该保证不重复，在消费者端调用服务只需要访问服务名称（这里叫：springcloud-consul-provider），消费者端的ribbon的loadbalance注解会负载均衡决定请求哪一个实例
+        instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
 #       health-check-path: 默认值是 /actuator/health，不需要配，但是在window下会解析错误，导致健康检查出错，配置health-check-url代替可以解决，如：http://192.168.1.102:9003/actuator/health
